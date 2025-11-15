@@ -2,7 +2,7 @@
  * Written by ghgltggamer
  * Licensed under the MIT License
  * Please refer the documentation / README.md for more information
- * Goblin's Demonic Tiny Web Server - GDTWS is a free and open source program written with the help of cpp-httplib by Yuji Hirose, But the one which is maintained by the GDTWS Project not the official one, So any bugs related to the webserver are intended to go to the issues of GDTWS.
+ * Goblin's Demonic Web File Manager (GDWFM) - A free, open-source, theme-able, lightweight web-based file manager and server written in C++, powered by a custom-maintained fork of `cpp-httplib`.
  * Feel free to write your own backend on top of this or modify this as your wish
  */
 

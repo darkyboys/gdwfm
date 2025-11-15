@@ -1,137 +1,180 @@
-# 👹 Goblin’s Demonic Tiny Web Server (GDTWS)
+# **Goblin's Demonic Web File Manager (GDWFM)**
 <img src="art/banner - light.png"> 
-**GDTWS** — the *Goblin’s Demonic Tiny Web Server* — is a **blazing-fast**, single-binary HTTP file server written in **C++**, powered by [`cpp-httplib`](https://github.com/yhirose/cpp-httplib) and built with the [`cook`](https://github.com/darkyboys/cook) build system.
-
-It’s small, fast, and unreasonably aggressive at serving your files.  
-Perfect for local web development, embedded devices, or if you just like to summon demons with sockets. 🧙‍♂️🔥
+A free, open-source, theme-able, lightweight web-based file manager and server written in C++, powered by a custom-maintained fork of `cpp-httplib`.
 
 ---
 
-## ⚙️ Features
+## 📌 **Overview**
 
-- 🧩 **Zero dependencies** — no external libraries, no bloat.
-- ⚡ **Native speed** — pure C++, compiled straight to machine code.
-- 📂 **Static file hosting** — serves `.html`, `.css`, `.js`, images, and more.
-- 🚫 **Secure** — prevents path traversal (no `../` hacks allowed).
-- 🧠 **UTF-8 aware** — serves Unicode and emoji content properly.
-- 💀 **Funny 404 messages** — each one cursed with a random demonic flavor.
-- 🧰 **CLI support** — configurable port and root directory.
-- 🧵 *(optional)* Multi-thread ready — built on top of cpp-httplib’s threaded model.
+**GDWFM (Goblin’s Demonic Web File Manager)** is a tiny but powerful local web server and browser-based file manager.
+
+It allows you to:
+
+* Host any directory as a navigable UI over HTTP
+* Browse folders through a clean, responsive HTML frontend
+* Download files directly
+* Extend or modify the entire backend (MIT License)
+* Customize the appearance through themes in `~/.config/gdwfm/`
+
+GDWFM uses a **custom-maintained fork** of `cpp-httplib` (Yuji Hirose), and **all issues related to the web server should be reported to the GDWFM project**, not the official httplib repo.
 
 ---
 
-## 🧑‍💻 Build Instructions
+## ✨ **Features**
 
-This project uses the [**Cook**](https://github.com/darkyboys/cook) build system — a simple, clean, dependency-free build tool.
+* 🌐 Serves any folder over HTTP
+* 📁 Auto-generated interactive file manager UI
+* 🖼️ Clean and responsive default theme
+* 🎨 Theme system (stored entirely in `~/.config/gdwfm/`)
+* 📄 Supports HTML, CSS, JS, images, and raw files
+* ⚙️ Configurable host, port, and root directory
+* 🛠️ No dependencies — compiled with your **Cook** build system
+* 🧵 Uses standard C++ (`<filesystem>`, `<fstream>`, `<iostream>`)
+* 🚫 No external libraries required
 
-### 🔨 To build:
+---
+
+## ⚙️ **Command Line Options**
+
+| Flag                         | Description                           |
+| ---------------------------- | ------------------------------------- |
+| `-v`, `--version`            | Show GDWFM version                    |
+| `-p <port>`, `--port <port>` | Set HTTP server port                  |
+| `-r <path>`, `--root <path>` | Set root directory to serve           |
+| `-h <host>`, `--host <host>` | Set host address (default: `0.0.0.0`) |
+
+Example:
+
 ```bash
-git clone https://github.com/darkyboys/gdtws
-cd gdtws/src
+./gdwfm --port 9090 --root ~/Documents
+```
+
+---
+
+## 🧑‍💻 **Build Instructions**
+
+GDWFM uses your clean, dependency-free **Cook build system**.
+
+```bash
+git clone https://github.com/darkyboys/gdwfm
+cd gdwfm/src
 cook -d
 ```
 
-This will compile the binary directly (no configuration needed).
-Your executable will appear in the same directory.
+✔️ The executable is placed directly in `src/`.
+✔️ No config files needed.
 
 ---
 
-## 🔃 Install Instructions
+## 🔃 **Installation**
 
-Once you have builded the project it's time to install it. This will ask you for your root password but don't worry it's all safe, The root password is only required because the installer will try to move the binary to `/usr/local/bin` directory, Which without the root access isn't possible.
+GDWFM installs into `/usr/local/bin/`, which requires root privileges.
 
-### 🔨 To install:
-```bash
-sudo cook install # Only for installation
-cook install/theme # Just installing the theme
-```
-
-This will install the binary directly (no configuration needed).
-This will also install the theme!
-
----
-
-## 🚀 Usage
+Install:
 
 ```bash
-./gdtws [options]
+sudo cook install
 ```
 
-### Available Options
-
-| Option                       | Description                                          |
-| ---------------------------- | ---------------------------------------------------- |
-| `--port <n>` or `-p <n>`     | Set the port number (default: `8080`)                |
-| `--root <dir>` or `-r <dir>` | Set the directory to serve files from (default: `.`) |
-| `--version` or `-v`          | Show version info and exit                           |
-
-### Example
-
-Serve your `website/` folder on port `9000`:
+Install only the default theme:
 
 ```bash
-./gdtws --port 9000 --root website
+cook install/theme
 ```
 
-Output:
+This installs:
 
 ```
-🚀 Goblin's Demonic Tiny Web Server v0.1.0 🧙‍♂️
-📂 Root directory: /home/user/website
-🌐 Server started on: http://0.0.0.0:9000
+~/.config/gdwfm/
+    index.html
+    ui.html
+    android.button.js
+    icon/
 ```
 
-Then open your browser and visit:
+The server automatically copies these on startup.
+
+---
+
+## 🎨 **Themes**
+
+Themes live entirely inside:
 
 ```
-http://localhost:9000
+~/.config/gdwfm/
 ```
 
----
+Anything you change there (HTML, CSS, JS, icons) becomes your custom UI.
 
-## 💀 Error Pages
+You can customize:
 
-When a file isn’t found, you’ll get one of GDTWS’s signature 404s, like:
+* `ui.html` (main file explorer template)
+* `android.button.js` (mobile ripple effects)
+* Icons in:
 
-> 💣 **Segmentation fault (core dumped) – 404 edition.**
+  ```
+  ~/.config/gdwfm/icon/
+  ```
 
-They’re rendered as HTML, so you can proudly cry in style.
-
----
-
-## 🧩 Embedding / Extending
-
-Feel free to:
-
-* Use this as a **backend base** for small apps.
-* Embed it in your own project.
-* Fork and modify it to your liking.
-
-The code is heavily commented and easy to extend — add your own routes, hooks, or middleware.
+A corrupted or missing theme triggers an error message with instructions to reinstall.
 
 ---
 
-## 🔐 Security Notes
+## 🖥️ **Default UI Features**
 
-* GDTWS automatically prevents access outside the root directory.
-* URL patterns like `/../`, `//`, or other traversal attempts are blocked with a **403 Forbidden** page.
-* All file reads are sandboxed inside the `--root` directory.
+The included default theme provides:
 
----
+* A navigation bar
+* Path input and navigation button
+* File and folder listing
+* Download buttons
+* Mobile-ready ripple animations
+* Clean light gray aesthetic
+* Simple and fast UX
 
-## 🧙‍♂️ License
-
-This project is licensed under the **MIT License** — see [`LICENSE`](./LICENSE) for details.
-
----
-
-## 🌌 Credits
-
-* Written by **[ghgltggamer](https://github.com/darkyboys)**
-* Built with **[cook](https://github.com/darkyboys/cook)**
-* Powered by **[`cpp-httplib`](https://github.com/yhirose/cpp-httplib)** (Yuji Hirose)
-* Managed under the **GDTWS Project**
+(Add screenshots if you want — I can generate a preview image for you.)
 
 ---
 
-> *"Sometimes the smallest server is the most demonic one."* 👹
+## 📁 **Key Internal Paths**
+
+| Path                          | Purpose                   |
+| ----------------------------- | ------------------------- |
+| `~/.config/gdwfm/`            | User theme directory      |
+| `/.gdwfm-server/config/`      | Server-side copy of theme |
+| `/.gdwfm-server/config/icon/` | Icons used by UI          |
+
+These are recreated when the server starts if necessary.
+
+---
+
+## 🧱 **Technical Notes**
+
+* Written in **C++17+**
+* Embedded file detection for MIME types
+* Automatically generates HTML from directory contents
+* Lightweight use of `httplib::Server`
+* Minimal system calls to mirror theme files into server space
+* Fully extensible backend — modify as you wish
+
+---
+
+## 📜 **License**
+
+GDWFM is licensed under the **MIT License**.
+You are free to modify, redistribute, and build on top of it.
+
+---
+
+## 🐛 **Issues & Bug Reports**
+
+All issues related to GDWFM and its custom httplib fork should be reported here:
+
+👉 **[https://github.com/daryboys/gdwfm/issues](https://github.com/daryboys/gdwfm/issues)**
+
+---
+
+## 🙌 **Acknowledgements**
+
+* **cpp-httplib** by Yuji Hirose (custom fork maintained by the GDWFM Project)
+* Development by **ghgltggamer**
