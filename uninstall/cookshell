@@ -1,0 +1,2 @@
+cook.allow.logging
+rm -rf ~/.config/gdwfm /usr/local/bin/gdwfm

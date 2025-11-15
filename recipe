@@ -1,0 +1,4 @@
+@show_logs true
+@system clear
+# global: compiler_arguments = "-O2"
+src/server.cc: out = "gdwfm"

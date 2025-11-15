@@ -1,0 +1,5 @@
+cook.allow.logging
+mkdir 2>/dev/null -p ~/.config/gdwfm
+cp -r theme/gdwfm-leaf-orignal/* ~/.config/gdwfm
+echo "The GDWFM Leaf Theme was installed!"
+echo ""

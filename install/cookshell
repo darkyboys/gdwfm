@@ -1,0 +1,2 @@
+cook.allow.logging
+cp bin/* /usr/local/bin
