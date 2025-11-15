@@ -170,7 +170,7 @@ You are free to modify, redistribute, and build on top of it.
 
 All issues related to GDWFM and its custom httplib fork should be reported here:
 
-👉 **[https://github.com/daryboys/gdwfm/issues](https://github.com/daryboys/gdwfm/issues)**
+👉 **[https://github.com/daryboys/gdwfm/issues](https://github.com/darkyboys/gdwfm/issues)**
 
 ---
 
