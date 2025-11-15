@@ -132,7 +132,7 @@ The included default theme provides:
 * Clean light gray aesthetic
 * Simple and fast UX
 
-(Add screenshots if you want — I can generate a preview image for you.)
+<img width="1920" height="924" alt="Screenshot_20251115_121335" src="https://github.com/user-attachments/assets/f3f85bfb-34ff-488b-9d35-609673ecbd84" />
 
 ---
 
